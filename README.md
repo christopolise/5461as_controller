@@ -34,4 +34,4 @@ As far as I have been able to figure, the pins on the 5461as, as numbered above,
 | 11     | | 4 |
 | 12     | B | |
 
-[breadboard setup](setup_bb.png)
+![breadboard setup](setup_bb.png)
