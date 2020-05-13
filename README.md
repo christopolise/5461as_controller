@@ -24,7 +24,7 @@ As far as I have been able to figure, the pins on the 5461as, as numbered above,
 | 1      | E | | 
 | 2      | D  | |
 | 3      | decimal point | |
-| 4      | c | |
+| 4      | C | |
 | 5      | G | |
 | 6      | | 1 |
 | 7      | | 2 |
