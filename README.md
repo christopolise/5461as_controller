@@ -1,6 +1,6 @@
 # 5461as 4 digit 7 segment Controller
 
-This is an experimental library to control the sevenseg part marked 5461as in my Elegoo Arduino Kit. (R3?) The part itself does *****NOT** come with a backpack, which means everything is controlled directly by the Arduino. Future ICs to facilitate a SPI or I2C connection to the microcontroller as to preserve more pins is always welcomed.
+This is an experimental library to control the sevenseg part marked 5461as in my Elegoo Arduino Kit. (R3?) The part itself does **NOT** come with a backpack, which means everything is controlled directly by the Arduino. Future ICs to facilitate a SPI or I2C connection to the microcontroller as to preserve more pins is always welcomed.
 
 ```bash
 
