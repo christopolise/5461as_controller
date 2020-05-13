@@ -1,3 +1,8 @@
+#include <Wire.h> // Enable this line if using Arduino Uno, Mega, etc.
+#include <Adafruit_GFX.h>
+#include "Adafruit_LEDBackpack.h"
+#include <time.h>
+
 uint8_t segA = 8;
 uint8_t segB = 12;
 uint8_t segC = 4;
@@ -15,9 +20,31 @@ uint8_t D4 = 7;
 uint8_t segments[8] = {segA, segB, segC, segD, segE, segF, segG, segPt};
 uint8_t digits[4] = {D1, D2, D3, D4};
 
+/*
+1=e
+2=d
+3=pt
+4=c
+5=g
+6=d1 (high turns it off)
+7=d4 ""
+8=a
+9=f
+10=d3 ""
+11=d2 ""
+12=b
+*/
+
 void printHex(String inp, bool decimalPoint=false, int decimalPos = 0, bool prependZeros = false);
 
+Adafruit_7segment matrix = Adafruit_7segment();
+
 void setup() {
+#ifndef __AVR_ATtiny85__
+  Serial.begin(9600);
+  Serial.println("7 Segment Backpack Test");
+#endif
+  matrix.begin(0x70);
   pinMode(segA, OUTPUT);
   pinMode(segB, OUTPUT);
   pinMode(segC, OUTPUT);
@@ -34,7 +61,30 @@ void setup() {
 }
 
 void loop() {
+  
   printHex("beef");
+  // try to print a number thats too long
+//  matrix.print(10000, DEC);
+//  matrix.writeDisplay();
+//  delay(500);
+
+  // print a hex number
+//  matrix.print(0xBEEF, HEX);
+//  matrix.writeDisplay();
+//  delay(500);
+
+  // print a floating point 
+  matrix.print(12.34);
+  matrix.writeDisplay();
+//  delay(500);
+  
+  // print with print/println
+//  for (uint16_t counter = 0; counter < 9999; counter++) {
+//    matrix.println(counter);
+//    matrix.writeDisplay();
+//    delay(10);
+//  }
+
 }
 
 void reset()
@@ -45,6 +95,7 @@ void reset()
 
   for(uint8_t i = 0; i < sizeof(segments)/sizeof(segments[0]); i++)
     digitalWrite(segments[i], LOW);
+  
 }
 
 void printError()
